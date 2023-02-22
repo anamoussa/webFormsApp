@@ -49,6 +49,9 @@
                 <br />
                 GradeFName:
                 <asp:TextBox ID="GradeFNameTextBox" runat="server" Text='<%# Bind("GradeFName") %>' />
+                <br /> 
+                GradeGroupName:
+                <asp:TextBox ID="GradeGroupNameTextBox" runat="server" Text='<%# Bind("GradeGroupName") %>' />
                 <br />
                 <asp:LinkButton ID="UpdateButton" runat="server" CausesValidation="True" CommandName="Update" Text="Update" />
                 &nbsp;<asp:LinkButton ID="UpdateCancelButton" runat="server" CausesValidation="False" CommandName="Cancel" Text="Cancel" />
@@ -68,6 +71,9 @@
                 <br />
                 GradeFName:
                 <asp:TextBox ID="GradeFNameTextBox" runat="server" Text='<%# Bind("GradeFName") %>' />
+                <br /> 
+                GradeGroupName:
+                <asp:TextBox ID="GradeGroupNameTextBox" runat="server" Text='<%# Bind("GradeGroupName") %>' />
                 <br />
                 <asp:LinkButton ID="InsertButton" runat="server" CausesValidation="True" CommandName="Insert" Text="Insert" />
                 &nbsp;<asp:LinkButton ID="InsertCancelButton" runat="server" CausesValidation="False" CommandName="Cancel" Text="Cancel" />
@@ -84,6 +90,9 @@
                 <br />
                 GradeFName:
                 <asp:Label ID="GradeFNameLabel" runat="server" Text='<%# Bind("GradeFName") %>' />
+                <br /> 
+                GradeGroupName:
+                <asp:Label ID="GradeGroupNameLabel" runat="server" Text='<%# Bind("GradeGroupName") %>' />
                 <br />
                 <asp:LinkButton ID="EditButton" runat="server" CausesValidation="False" CommandName="Edit" Text="Edit" />
                 &nbsp;<asp:LinkButton ID="DeleteButton" runat="server" CausesValidation="False" CommandName="Delete" Text="Delete" />
@@ -98,11 +107,12 @@
         </asp:FormView>
         <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
             ConnectionString="<%$ ConnectionStrings:DNATrainingConnectionString2 %>" 
-            SelectCommand="SELECT [Grade], [GradeName], [GradeAName], [GradeFName] FROM [Grades] where [Grade] = @Code"
+            SelectCommand="SELECT GG.GradeGroupName, [Grade], [GradeName], [GradeAName], [GradeFName] FROM [Grades] G
+                               join GradeGroups GG on G.Grade=GG.GradeGroup where G.[Grade] = @Code"
             ConflictDetection="CompareAllValues"
             DeleteCommand="DELETE FROM [Grades] WHERE 
             [Grade] = @original_Grade AND [GradeName] = @original_GradeName AND [GradeAName] = @original_GradeAName AND [GradeFName] = @original_GradeFName" 
-            InsertCommand="INSERT INTO [Grades] ([Grade], [GradeName], [GradeAName], [GradeFName]) 
+            InsertCommand="INSERT INTO [Grades] ([Grade], [GradeName], [GradeAName], [GradeFName],) 
             VALUES (@Grade, @GradeName, @GradeAName, @GradeFName)" OldValuesParameterFormatString="original_{0}" 
             UpdateCommand="UPDATE [Grades] 
             SET [GradeName] = @GradeName, [GradeAName] = @GradeAName, [GradeFName] = @GradeFName
@@ -123,6 +133,7 @@
                 <asp:Parameter Name="GradeName" Type="String" />
                 <asp:Parameter Name="GradeAName" Type="String" />
                 <asp:Parameter Name="GradeFName" Type="String" />
+                <asp:Parameter Name="GradeGroupName" Type="String" />
             </InsertParameters>
 
             <UpdateParameters>
