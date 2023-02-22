@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="DNATraining" Class="DataClasses1DataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=fz-dv-db01;Initial Catalog=DNATraining;Persist Security Info=True;User ID=hitstraining" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="DNATrainingConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Grades" Member="Grades">
+    <Type Name="Grade">
+      <Column Name="Grade" Member="Grade1" Type="System.Int16" DbType="SmallInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="GradeName" Type="System.String" DbType="NVarChar(60) NOT NULL" CanBeNull="false" />
+      <Column Name="GradeAName" Type="System.String" DbType="NVarChar(60) NOT NULL" CanBeNull="false" />
+      <Column Name="GradeFName" Type="System.String" DbType="NVarChar(60) NOT NULL" CanBeNull="false" />
+      <Column Name="GradeYears" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="GradeStepAmount" Type="System.Decimal" DbType="Decimal(18,3) NOT NULL" CanBeNull="false" />
+      <Column Name="GradeOrder" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="GradeGroup" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="bcount" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="bsalary" Type="System.Decimal" DbType="Decimal(18,3) NOT NULL" CanBeNull="false" />
+      <Column Name="level_priv" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="GradeCons" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="GradeNameCons" Type="System.String" DbType="NVarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="GradeANameCons" Type="System.String" DbType="NVarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="GradeFNameCons" Type="System.String" DbType="NVarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="GradeFromDate" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="GradeToDate" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="GradesRoles" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="GradesRYear" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="GradesRNo" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="GradesRIssueDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="GradesRExecDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="GradesRStatus" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="GradesRSource" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="GradesRDesc" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="GradesGUID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Association Name="Grade_GradeSalary" Member="GradeSalaries" ThisKey="Grade1" OtherKey="Grade" Type="GradeSalary" />
+      <Association Name="Grade_GradeZone" Member="GradeZones" ThisKey="Grade1" OtherKey="Grade" Type="GradeZone" />
+      <Association Name="GradeGroup_Grade" Member="GradeGroup1" ThisKey="GradeGroup" OtherKey="GradeGroup1" Type="GradeGroup" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.GradeGroups" Member="GradeGroups">
+    <Type Name="GradeGroup">
+      <Column Name="GradeGroup" Member="GradeGroup1" Type="System.Int16" DbType="SmallInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="GradeGroupName" Type="System.String" DbType="NVarChar(60) NOT NULL" CanBeNull="false" />
+      <Column Name="GradeGroupAName" Type="System.String" DbType="NVarChar(60) NOT NULL" CanBeNull="false" />
+      <Column Name="GradeGroupFName" Type="System.String" DbType="NVarChar(60) NOT NULL" CanBeNull="false" />
+      <Column Name="GradeGroupOrder" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="GradeGroupCons" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="GradeGroupNameCons" Type="System.String" DbType="NVarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="GradeGroupANameCons" Type="System.String" DbType="NVarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="GradeGroupFNameCons" Type="System.String" DbType="NVarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="GradeGroupFromDate" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="GradeGroupToDate" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="GradeGroupsRoles" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="GradeGroupsRYear" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="GradeGroupsRNo" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="GradeGroupsRIssueDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="GradeGroupsRExecDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="GradeGroupsRStatus" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="GradeGroupsRSource" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="GradeGroupsRDesc" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="GradeGroupsGUID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Association Name="GradeGroup_Grade" Member="Grades" ThisKey="GradeGroup1" OtherKey="GradeGroup" Type="Grade" />
+    </Type>
+  </Table>
+  <Table Name="dbo.GradeSalary" Member="GradeSalaries">
+    <Type Name="GradeSalary">
+      <Column Name="PayrollGroup" Type="System.Int16" DbType="SmallInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Grade" Type="System.Int16" DbType="SmallInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Paycode" Type="System.Int16" DbType="SmallInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="StartDate" Type="System.DateTime" DbType="SmallDateTime NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="GradeAmount" Type="System.Decimal" DbType="Decimal(18,3) NOT NULL" CanBeNull="false" />
+      <Column Name="GradeSalaryGUID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Association Name="Grade_GradeSalary" Member="Grade1" ThisKey="Grade" OtherKey="Grade1" Type="Grade" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.GradeZone" Member="GradeZones">
+    <Type Name="GradeZone">
+      <Column Name="Grade" Type="System.Int16" DbType="SmallInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Zone" Type="System.String" DbType="NVarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Paycode" Type="System.Int16" DbType="SmallInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="StartDate" Type="System.DateTime" DbType="SmallDateTime NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ZoneCurrency" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="MinAmount" Type="System.Decimal" DbType="Decimal(18,3) NOT NULL" CanBeNull="false" />
+      <Column Name="MidAmount" Type="System.Decimal" DbType="Decimal(18,3) NOT NULL" CanBeNull="false" />
+      <Column Name="MaxAmount" Type="System.Decimal" DbType="Decimal(18,3) NOT NULL" CanBeNull="false" />
+      <Column Name="GradeZoneGUID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Association Name="Grade_GradeZone" Member="Grade1" ThisKey="Grade" OtherKey="Grade1" Type="Grade" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+</Database>

@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 9.125" name="DataClasses1">
+  <DataContextMoniker Name="/DataClasses1DataContext" />
+  <nestedChildShapes>
+    <classShape Id="49b21e2d-47ec-4ce5-834e-416f2f327777" absoluteBounds="3.125, 2.625, 2, 5.8092268880208326">
+      <DataClassMoniker Name="/DataClasses1DataContext/Grade" />
+      <nestedChildShapes>
+        <elementListCompartment Id="d08a1da2-09eb-4818-bbc9-5575834b17a2" absoluteBounds="3.14, 3.085, 1.9700000000000002, 5.249226888020833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="fc1e29d8-e21d-4bbc-a8d2-5b573748c446" absoluteBounds="0.5, 2.625, 2, 4.6554182942708326">
+      <DataClassMoniker Name="/DataClasses1DataContext/GradeGroup" />
+      <nestedChildShapes>
+        <elementListCompartment Id="dcf488b7-9c93-4e3a-898d-5713f5dd2b3f" absoluteBounds="0.51500000000000012, 3.085, 1.9700000000000002, 4.095418294270833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(2.5 : 4.95270914713542); (3.125 : 4.95270914713542)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/DataClasses1DataContext/GradeGroup/GradeGroup_Grade" />
+      <nodes>
+        <classShapeMoniker Id="fc1e29d8-e21d-4bbc-a8d2-5b573748c446" />
+        <classShapeMoniker Id="49b21e2d-47ec-4ce5-834e-416f2f327777" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="98c72178-b5e7-41d9-a24b-6d2bedbeeee7" absoluteBounds="6.25, 3.375, 2, 1.9631982421875">
+      <DataClassMoniker Name="/DataClasses1DataContext/GradeSalary" />
+      <nestedChildShapes>
+        <elementListCompartment Id="d4b7d83d-cc0a-493f-9aa2-ef807e36531f" absoluteBounds="6.265, 3.835, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(5.125 : 4.35659912109375); (6.25 : 4.35659912109375)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/DataClasses1DataContext/Grade/Grade_GradeSalary" />
+      <nodes>
+        <classShapeMoniker Id="49b21e2d-47ec-4ce5-834e-416f2f327777" />
+        <classShapeMoniker Id="98c72178-b5e7-41d9-a24b-6d2bedbeeee7" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="8e1754f9-0f5d-4bd6-ae9c-74abd670420a" absoluteBounds="7.125, 6.375, 2, 2.5401025390625">
+      <DataClassMoniker Name="/DataClasses1DataContext/GradeZone" />
+      <nestedChildShapes>
+        <elementListCompartment Id="c40dbf5b-00be-45ea-a2e5-a84dc20ffc97" absoluteBounds="7.14, 6.835, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(5.125 : 7.40461344401042); (7.125 : 7.40461344401042)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/DataClasses1DataContext/Grade/Grade_GradeZone" />
+      <nodes>
+        <classShapeMoniker Id="49b21e2d-47ec-4ce5-834e-416f2f327777" />
+        <classShapeMoniker Id="8e1754f9-0f5d-4bd6-ae9c-74abd670420a" />
+      </nodes>
+    </associationConnector>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>
