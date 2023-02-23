@@ -32,35 +32,7 @@ namespace TestEntity
         }
         protected void OnSelectedIndexChanged(object sender, EventArgs e)
         {
-            var GradId = grd_Grades.SelectedRow.Cells[1].Text;
-            var vOut = Convert.ToInt16(GradId);
-            var grade_Details = (from g in db.Grades
-                                where g.Grade1 == vOut
-                                select  g).FirstOrDefault();
-
-            string id = grade_Details.Grade1.ToString();
-            string gradeEname = grade_Details.GradeName.ToString();
-            string gradeAName = grade_Details.GradeAName.ToString();
-            string gradeFName = grade_Details.GradeFName.ToString();
-          
-
-
-            //DataTable dt = new DataTable();
-            //dt.Columns.AddRange(
-            //       new DataColumn[4] 
-            //       {
-            //        new DataColumn("Id", typeof(string)),
-            //        new DataColumn("Name", typeof(string)),
-            //        new DataColumn("Description",typeof(string)),
-            //        new DataColumn("gradeFName",typeof(string)) 
-
-            //       });
-            //dt.Rows.Add(id, name, description,gradeFName);
-            //FormView1.DataSource = dt;
-            //FormView1.DataBind();
-
-
-
+           
         }
 
         protected void FormView1_PageIndexChanging(object sender, FormViewPageEventArgs e)
@@ -77,6 +49,11 @@ namespace TestEntity
         {
             getData();
 
+        }
+
+        protected void FormView1_ItemInserted(object sender, FormViewInsertedEventArgs e)
+        {
+            getData();
         }
     }
 }

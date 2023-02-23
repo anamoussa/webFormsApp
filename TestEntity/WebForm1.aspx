@@ -36,7 +36,7 @@
         <asp:FormView ID="FormView1" runat="server" DataKeyNames="Grade" DataSourceID="SqlDataSource1" Width="1229px" 
             OnPageIndexChanging="FormView1_PageIndexChanging" BackColor="White" BorderColor="#336666" BorderStyle="Double" 
             BorderWidth="3px" CellPadding="4" GridLines="Horizontal" 
-            OnItemDeleted="FormView1_ItemDeleted" OnItemUpdated="FormView1_ItemUpdated">
+            OnItemDeleted="FormView1_ItemDeleted" OnItemUpdated="FormView1_ItemUpdated" OnItemInserted="FormView1_ItemInserted">
             <EditItemTemplate>
                 Grade:
                 <asp:Label ID="GradeLabel1" runat="server" Text='<%# Eval("Grade") %>' />
@@ -51,14 +51,16 @@
                 <asp:TextBox ID="GradeFNameTextBox" runat="server" Text='<%# Bind("GradeFName") %>' />
                 <br /> 
                 GradeGroupName:
-                <asp:TextBox ID="GradeGroupNameTextBox" runat="server" Text='<%# Bind("GradeGroupName") %>' />
-                <br />
+                 <asp:DropDownList ID="DropDownList2" runat="server" DataSourceID="SqlDataSourceDropdown" DataTextField="GradeGroupName" DataValueField="GradeGroup" Height="35px" Width="191px">
+                </asp:DropDownList>   <br />
                 <asp:LinkButton ID="UpdateButton" runat="server" CausesValidation="True" CommandName="Update" Text="Update" />
                 &nbsp;<asp:LinkButton ID="UpdateCancelButton" runat="server" CausesValidation="False" CommandName="Cancel" Text="Cancel" />
             </EditItemTemplate>
             <EditRowStyle BackColor="#339966" Font-Bold="True" ForeColor="White" />
             <FooterStyle BackColor="White" ForeColor="#333333" />
             <HeaderStyle BackColor="#336666" Font-Bold="True" ForeColor="White" />
+            
+
             <InsertItemTemplate>
                 Grade:
                 <asp:TextBox ID="GradeTextBox" runat="server" Text='<%# Bind("Grade") %>' />
@@ -71,13 +73,17 @@
                 <br />
                 GradeFName:
                 <asp:TextBox ID="GradeFNameTextBox" runat="server" Text='<%# Bind("GradeFName") %>' />
+               
                 <br /> 
                 GradeGroupName:
-                <asp:TextBox ID="GradeGroupNameTextBox" runat="server" Text='<%# Bind("GradeGroupName") %>' />
+                  <asp:DropDownList ID="DropDownList2" runat="server" DataSourceID="SqlDataSourceDropdown" DataTextField="GradeGroupName" DataValueField="GradeGroup" Height="35px" Width="191px">
+                </asp:DropDownList>
                 <br />
                 <asp:LinkButton ID="InsertButton" runat="server" CausesValidation="True" CommandName="Insert" Text="Insert" />
                 &nbsp;<asp:LinkButton ID="InsertCancelButton" runat="server" CausesValidation="False" CommandName="Cancel" Text="Cancel" />
             </InsertItemTemplate>
+          
+            
             <ItemTemplate>
                 Grade:
                 <asp:Label ID="GradeLabel" runat="server" Text='<%# Eval("Grade") %>' />
@@ -105,14 +111,19 @@
 
 
         </asp:FormView>
+        <asp:SqlDataSource ID="SqlDataSourceDropdown" runat="server"
+            ConnectionString="<%$ ConnectionStrings:DNATrainingConnectionString2 %>" 
+             SelectCommand="SELECT [GradeGroup], [GradeGroupName] FROM [GradeGroups]">
+        </asp:SqlDataSource>
+
         <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
             ConnectionString="<%$ ConnectionStrings:DNATrainingConnectionString2 %>" 
             SelectCommand="SELECT GG.GradeGroupName, [Grade], [GradeName], [GradeAName], [GradeFName] FROM [Grades] G
                                join GradeGroups GG on G.Grade=GG.GradeGroup where G.[Grade] = @Code"
             ConflictDetection="CompareAllValues"
             DeleteCommand="DELETE FROM [Grades] WHERE 
-            [Grade] = @original_Grade AND [GradeName] = @original_GradeName AND [GradeAName] = @original_GradeAName AND [GradeFName] = @original_GradeFName" 
-            InsertCommand="INSERT INTO [Grades] ([Grade], [GradeName], [GradeAName], [GradeFName],) 
+            [Grade] = @original_Grade" 
+            InsertCommand="INSERT INTO [Grades] ([Grade], [GradeName], [GradeAName], [GradeFName]) 
             VALUES (@Grade, @GradeName, @GradeAName, @GradeFName)" OldValuesParameterFormatString="original_{0}" 
             UpdateCommand="UPDATE [Grades] 
             SET [GradeName] = @GradeName, [GradeAName] = @GradeAName, [GradeFName] = @GradeFName
@@ -121,11 +132,9 @@
             <SelectParameters>
            <asp:ControlParameter runat="server" ControlID="grd_Grades" PropertyName="SelectedValue" Name="Code" Type="Int16" />
             </SelectParameters>
+            
             <DeleteParameters>
                 <asp:Parameter Name="original_Grade" Type="Int16" />
-                <asp:Parameter Name="original_GradeName" Type="String" />
-                <asp:Parameter Name="original_GradeAName" Type="String" />
-                <asp:Parameter Name="original_GradeFName" Type="String" />
             </DeleteParameters>
 
             <InsertParameters>
