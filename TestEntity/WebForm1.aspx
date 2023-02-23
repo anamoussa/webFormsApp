@@ -51,7 +51,7 @@
                 <asp:TextBox ID="GradeFNameTextBox" runat="server" Text='<%# Bind("GradeFName") %>' />
                 <br /> 
                 GradeGroupName:
-                 <asp:DropDownList ID="DropDownList2" runat="server" DataSourceID="SqlDataSourceDropdown" DataTextField="GradeGroupName" DataValueField="GradeGroup" Height="35px" Width="191px">
+                 <asp:DropDownList ID="DropDownList2" runat="server"   DataSourceID="SqlDataSourceDropdown" DataTextField="GradeGroupName" DataValueField="GradeGroup" Height="35px" Width="191px">
                 </asp:DropDownList>   <br />
                 <asp:LinkButton ID="UpdateButton" runat="server" CausesValidation="True" CommandName="Update" Text="Update" />
                 &nbsp;<asp:LinkButton ID="UpdateCancelButton" runat="server" CausesValidation="False" CommandName="Cancel" Text="Cancel" />
@@ -76,7 +76,8 @@
                
                 <br /> 
                 GradeGroupName:
-                  <asp:DropDownList ID="DropDownList2" runat="server" DataSourceID="SqlDataSourceDropdown" DataTextField="GradeGroupName" DataValueField="GradeGroup" Height="35px" Width="191px">
+                  <asp:DropDownList ID="DropDownList2" runat="server" DataSourceID="SqlDataSourceDropdown" 
+                      DataTextField="GradeGroupName" DataValueField="GradeGroup" Height="35px" Width="191px">
                 </asp:DropDownList>
                 <br />
                 <asp:LinkButton ID="InsertButton" runat="server" CausesValidation="True" CommandName="Insert" Text="Insert" />
@@ -118,15 +119,15 @@
 
         <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
             ConnectionString="<%$ ConnectionStrings:DNATrainingConnectionString2 %>" 
-            SelectCommand="SELECT GG.GradeGroupName, [Grade], [GradeName], [GradeAName], [GradeFName] FROM [Grades] G
-                               join GradeGroups GG on G.Grade=GG.GradeGroup where G.[Grade] = @Code"
+            SelectCommand="SELECT GG.GradeGroupName, [Grade], [GradeName], [GradeAName], [GradeFName],G.[GradeGroup] FROM [Grades] G
+                               join GradeGroups GG on G.GradeGroup=GG.GradeGroup where G.[Grade] = @Code"
             ConflictDetection="CompareAllValues"
             DeleteCommand="DELETE FROM [Grades] WHERE 
             [Grade] = @original_Grade" 
-            InsertCommand="INSERT INTO [Grades] ([Grade], [GradeName], [GradeAName], [GradeFName]) 
-            VALUES (@Grade, @GradeName, @GradeAName, @GradeFName)" OldValuesParameterFormatString="original_{0}" 
+            InsertCommand="INSERT INTO [Grades] ([Grade], [GradeName], [GradeAName], [GradeFName],[GradeGroup]) 
+            VALUES (@Grade, @GradeName, @GradeAName, @GradeFName,@GradeGroup)" OldValuesParameterFormatString="original_{0}" 
             UpdateCommand="UPDATE [Grades] 
-            SET [GradeName] = @GradeName, [GradeAName] = @GradeAName, [GradeFName] = @GradeFName
+            SET [GradeName] = @GradeName, [GradeAName] = @GradeAName, [GradeFName] = @GradeFName ,[GradeGroup]=@GradeGroup
             WHERE [Grade] = @original_Grade "
             >
             <SelectParameters>
@@ -142,13 +143,15 @@
                 <asp:Parameter Name="GradeName" Type="String" />
                 <asp:Parameter Name="GradeAName" Type="String" />
                 <asp:Parameter Name="GradeFName" Type="String" />
-                <asp:Parameter Name="GradeGroupName" Type="String" />
+                <asp:ControlParameter runat="server" ControlID="FormView1$DropDownList2" PropertyName="SelectedValue" Name="GradeGroup" Type="Int16" />
+
             </InsertParameters>
 
             <UpdateParameters>
                 <asp:Parameter Name="GradeName" Type="String" />
                 <asp:Parameter Name="GradeAName" Type="String" />
                 <asp:Parameter Name="GradeFName" Type="String" />
+                <asp:ControlParameter runat="server" ControlID="FormView1$DropDownList2" PropertyName="SelectedValue" Name="GradeGroup" Type="Int16" />
                 <asp:Parameter Name="original_Grade" Type="Int16" />
                 <asp:Parameter Name="original_GradeName" Type="String" />
                 <asp:Parameter Name="original_GradeAName" Type="String" />

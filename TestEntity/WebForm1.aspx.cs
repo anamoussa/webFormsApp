@@ -20,7 +20,7 @@ namespace TestEntity
         {
 
             var grades = from G in db.Grades
-                        join GG in db.GradeGroups on G.Grade1 equals GG.GradeGroup1
+                        join GG in db.GradeGroups on G.GradeGroup equals GG.GradeGroup1
                         select new { G.Grade1, G.GradeName, G.GradeAName, GG.GradeGroupName };
             grd_Grades.DataSource = grades;
             grd_Grades.DataBind();
